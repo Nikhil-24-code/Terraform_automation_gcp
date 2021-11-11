@@ -1,0 +1,44 @@
+/* The code assists you to create an automation for creating compute gcp instance in the Google cloud Console
+Please follow the comments with any line to understand the concept and need of the terms
+*/
+
+// This below block determines the target provider like AWS,GCP or Azure
+**
+provider "google" {
+  version = "3.5.0"
+  project = "Enter your Google Project ID"
+  region  = "us-central1"
+  zone    = "us-central1-c"
+} *1st part 
+
+// Now the part mentioned below is the resource block to create any service in GCP like compute, storage or network
+
+resource "google_compute_network" "vpc_network" {
+  name = "terraform-network"
+}
+resource "google_compute_instance" "vm_instance" {
+  name         = "terraform-instance"
+  machine_type = "f1-micro"
+  tags         = ["web", "dev"]
+   boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-9"
+    }
+  }
+  network_interface {
+    network = google_compute_network.vpc_network.name
+    access_config {
+    }
+  }
+}
+**
+
+/* Things to remember 
+
+1. You can use any IDE editor like Atom etc, or in any easy case you can use Notepad for writing your code(Remember using Notepad you might make mistakes in Syntax)
+2. 1st part of the block code is a compulsory irrespective your cloud provider
+3. While saving your code file, please use the extension .tf for the terraform file
+4. Please keep in mind before running your code in the power shell or the cmd please install your SDK into remote system
+5. refer to the terraform registry for any code  reference
+6. refer to the arguement reference for the particulary required resource.
+/*
