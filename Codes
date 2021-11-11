@@ -1,0 +1,21 @@
+gcloud auth application-default login = Connect your SDK with the console
+
+gcloud auth 
+
+
+terraform = Checks the availability of terraform in the system environment 
+
+terraform -v = Checks the version of the terraform
+
+touch nameofthefile.tf = creates a terraform file for writing code
+
+terraform init = This will initialize various local settings and data, mostly updates the provider and the plug in
+
+terraform plan = check whether the execution plan for a set of changes matches your expectations without making any changes to real resources or to the state.
+
+terraform apply = Apply the changes made in the terraform file
+
+terraform show = Inspect the current state of config
+
+terraform destroy = Destroy the infrastructure or resource
+
